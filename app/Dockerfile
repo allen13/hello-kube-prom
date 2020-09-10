@@ -3,9 +3,9 @@
 # step 1 - build image
 FROM golang:1.15.1-alpine AS builder
 
-# RUN apk update && apk add git
+RUN apk update && apk add git
+RUN go get -v github.com/prometheus/client_golang/prometheus/promhttp
 
-# RUN go get -v github.com/prometheus/client_golang/prometheus/promhttp
 WORKDIR /go/src
 
 COPY . .

@@ -6,6 +6,7 @@ Build App:
     docker build . -t hello-api:v0.2.0
     kubectl apply -f deployment.yml
     kubectl apply -f svc.yml
+    kubectl apploy -f servicemonitor.yml
 
 Deploy Prometheus
 
