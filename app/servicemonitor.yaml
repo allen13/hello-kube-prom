@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: hello-api
+  name: hello-api
+  namespace: default
+spec:
+  endpoints:
+  - interval: 5s
+    port: tcp-8090
+  selector:
+    matchLabels:
+      app: hello-api

@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: prometheus-k8s-rules
+  namespace: default
+spec:
+  groups:
+  - name: example.rules
+    rules:
+    - alert: TestAlert
+      annotations:
+        message: Test Alert
+      expr: vector(0)
+      for: 10m
+      labels:
+        severity: warning

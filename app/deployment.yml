@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-api
+  labels:
+    app: hello-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-api
+  template:
+    metadata:
+      labels:
+        app: hello-api
+    spec:
+      containers:
+      - name: hello-api
+        image: hello-api:v0.2.0
+        env:
+          # learn about the downward api https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#the-downward-api
+        - name: HELLO
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        ports:
+        - name: web
+          containerPort: 8090
+          protocol: TCP
